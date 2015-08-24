@@ -39,5 +39,32 @@ class My_slider{
 			array('id'=>$id)
 			);
 	}
+	public function find($id){
+		global $wpdb;
+		return $wpdb->get_results(
+				"SELECT * 
+				FROM  ".$this->table_name."
+				WHERE id= $id
+				",
+				'ARRAY_A'
+			);
+	}
+	public function edit($id,$args){
+		global $wpdb;
+		return $wpdb->update(
+				$this->table_name,
+				$args,
+				array('id'=> $id )
+			);
+	}
+	public function select($id,$fields){
+		global $wpdb;
+		return $wpdb->get_results(
+			"SELECT $fields
+			FROM ".$this->table_name."
+			WHERE id= $id ",
+			'ARRAY_A'
+			);
+	}
 }
  ?>

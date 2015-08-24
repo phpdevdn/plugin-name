@@ -16,6 +16,19 @@
 			}
 			header('location:'.$_SERVER['HTTP_REFERER'].'&save='.$result);
 			break;
+		case 'edit':
+			if(isset($_GET['id']) && !empty($_GET['id'])){
+				$result=$admin->edit($_GET['id'],array(
+						'name'=>$_POST['sl_name'],
+						'status'=>$_POST['sl_status']
+					));
+				if($result){
+					header('location:'.admin_url('admin.php?page=my_slider'));
+				} else{
+					header('location:'.$_SERVER['HTTP_REFERER'].'&error');
+				}
+			}
+			break;
 		case 'del':
 			if(!empty($_GET['id'])){
 				$admin->delete($_GET['id']);

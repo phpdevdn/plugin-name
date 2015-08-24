@@ -43,8 +43,10 @@
 	 			<td><?php echo $result['name'] ?></td>
 	 			<td><?php echo ($result['status'] == 1) ? 'active' : 'disable' ; ?></td>
 	 			<td>
-	 				<span><a href="<?php echo admin_url('admin.php?page=edit_image&id='.$result['id'].'&name='.$result['name']); ?>" title="edit">edit</a> </span>
+	 				<span><a href="<?php echo admin_url('admin.php?page=edit_image&id='.$result['id']); ?>" title="edit">image</a> </span>
 	 				&nbsp;&nbsp;&nbsp;
+	 				<span><a href="<?php echo admin_url('admin.php?page=edit_slider&id='.$result['id']); ?>" title="edit slider">edit</a> </span>
+	 				&nbsp;&nbsp;
 	 				<span><a href="<?php echo PLUGIN_URL.'save-slider.php?act=del&id='.$result['id'] ?>" title="delete">delete</a> </span>
 	 			</td>
 	 		</tr>

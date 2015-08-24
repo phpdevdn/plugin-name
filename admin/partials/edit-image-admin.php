@@ -1,7 +1,17 @@
-<h2>Add image to "<?php echo $_GET['name'] ?>"</h2>
 <?php if(isset($_GET['result'])){
 	echo "<p>".$_GET['result']."</p>";
-} ?>
+} 
+	if(!isset($_GET['id']) || empty($_GET['id'])){
+		echo 'not found';
+		return;
+	}
+?>
+<?php require_once( PLUGIN_PATH . 'includes/My-slider-table.php');
+		$sl_obj=new My_slider();
+		$slider=$sl_obj->select($_GET['id'],'name');
+		$slider=$slider[0];
+ ?>
+<h2>Add image to "<?php echo $slider['name'] ?>"</h2>
 <?php require_once(PLUGIN_PATH.'includes/My-images-table.php') ;
 		$images= new My_images();
 		$img_list=$images->find_images_slider($_GET['id']);
@@ -31,9 +41,9 @@
 	 			<td><?php echo $result['date_create'] ?></td>
 	 			<td><?php echo ($result['status'] == 1) ? 'active' : 'disable' ; ?></td>
 	 			<td>
-	 				<span><a href="<?php echo admin_url('admin.php?page=edit_image&id='.$result['id'].'&name='.$result['name']); ?>" title="edit">edit</a> </span>
+	 				<span><a href="<?php echo admin_url('admin.php?page=edit_image_slider&id='.$result['id']) ; ?>" title="edit">edit</a> </span>
 	 				&nbsp;&nbsp;&nbsp;
-	 				<span><a href="<?php echo PLUGIN_URL.'save-slider.php?act=del&id='.$result['id'] ?>" title="delete">delete</a> </span>
+	 				<span><a href="<?php echo PLUGIN_URL.'my-images.php?act=del&id='.$result['id'] ?>" title="delete">delete</a> </span>
 	 			</td>
 	 		</tr>
 	 	<?php endforeach; ?>
@@ -69,8 +79,12 @@
 				</tr>
 				<tr>
 					<td><label for="img-src">src :</label></td>
-					<td> 
-						<input type="text" name="img_src" id="img-src" class="regular-text" value >
+					<td style="vertical-align:bottom"> 
+						<div class="image-brow">
+						<img src="" alt="image" width="150px" height="150px" class="image-dis">
+						<button class="button button-primary image-butt ">Browser</button>
+						<input type="hidden" name="img_src" id="img-src" class="regular-text image-in" value >
+						</div>
 					</td>
 				</tr>
 

@@ -99,5 +99,12 @@ class Plugin_Name_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-public.js', array( 'jquery' ), $this->version, false );
 
 	}
+	public function display($arg){
+		if(empty($arg)){
+			echo 'NO FOUND';
+			return ;
+		}
+		include_once('partials/image-display.php');
+	}
 
 }

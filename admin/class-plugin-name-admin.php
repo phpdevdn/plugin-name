@@ -96,19 +96,27 @@ class Plugin_Name_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_media();
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 	public function setting_page(){
 		add_menu_page('Add Silder', 'My Slider', 'manage_options','my_slider',array($this,'render_setting_page'), '', 26 );
-		add_submenu_page( 'my_slider','Hidden!' , 'Hidden!', 'manage_options', 'edit_image', array($this,'render_edit_image') );
+		add_submenu_page( null,'', '', 'manage_options', 'edit_image', array($this,'render_edit_image') );
+		add_submenu_page( null,'Hidden!' , 'Hidden!', 'manage_options', 'edit_slider', array($this,'render_edit_slider') );
+		add_submenu_page( null,'Hidden!' , 'Hidden!', 'manage_options', 'edit_image_slider', array($this,'render_edit_image_slider') );
  	}
 	public function render_setting_page(){
 		include_once('partials/plugin-name-admin-display.php');
 	}
 	public function render_edit_image(){
 		include_once('partials/edit-image-admin.php');
+	}
+	public function render_edit_image_slider(){
+		include_once('partials/edit-image-slider-admin.php');
+	}
+	public function render_edit_slider(){
+		include_once('partials/edit-slider-admin.php');
 	}
  
 

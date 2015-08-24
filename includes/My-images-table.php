@@ -41,5 +41,30 @@ class My_images{
 			$args
 			);
 	}
+	public function find($id){
+		global $wpdb;
+		return $wpdb->get_results(
+				"SELECT *
+				FROM ".$this->table_name."
+				WHERE id= $id ",
+				'ARRAY_A'
+			);
+	}
+	public function edit($id,$args){
+		global $wpdb;
+		return $wpdb->update(
+			$this->table_name,
+			$args,
+			array('id'=>$id)
+			);
+
+	}
+	public function delete($id){
+		global $wpdb;
+		$wpdb->delete(
+			$this->table_name,
+			array('id'=>$id)
+			);
+	}
 }
  ?>
