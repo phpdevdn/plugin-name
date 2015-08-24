@@ -1,4 +1,72 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+#car-slider, #car01-slider {
+  border: 5px solid #eee;
+  padding: 0;
+  margin: 10px 0 30px;
+  overflow: hidden; 
+  position: relative;
+}
+  #car-slider .car-content, #car01-slider .car-content, #car01-slider .car01-content {
+    font-size: 16px;
+    text-align: center;
+    padding: 15px 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.38);
+    display: block;
+    width: 100%; }
+
+.car-images, .car01-images {
+  position: relative;
+  white-space: nowrap;
+  font-size: 0; }
+  .car-images .car-img, .car01-images .car-img, .car01-images .car01-img {
+    display: inline-block;
+    width: 33.33%;
+    vertical-align: top;
+    position: relative; }
+    .car-images .car-img img, .car01-images .car-img img, .car01-images .car01-img img {
+      max-width: 100%;
+      border: 1px solid #fff; }
+
+.car-direct a, .car01-direct a {
+  position: absolute;
+  top: 40%;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.66);
+  font-size: 37px;
+  font-weight: bold;
+  color: #333;
+  padding: 29px 5px;
+  line-height: 0px;
+  border-radius: 4px; }
+  .car-direct a:hover, .car01-direct a:hover, .car-direct a:focus, .car01-direct a:focus {
+    background: rgba(51, 51, 51, 0.71);
+    color: #D5CCCC;
+    text-decoration: none; }
+  .car-direct a.prev, .car01-direct a.prev {
+    left: 0px; }
+  .car-direct a.next, .car01-direct a.next {
+    right: 0; }
+
+.car-pos, .car01-pos {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  text-align: center; }
+  .car-pos li, .car01-pos li {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 4px;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer; }
+    .car-pos li.active, .car01-pos li.active {
+      background: #666; }
+
+@media screen and (max-width: 640px) {
+  .car-images .car-img, .car01-images .car-img, .car01-images .car01-img {
+    width: 50%; } }
